@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="EmployeeManagementSystem.manageEmployee"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EmployeeManagementSystem"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="lvEmployees" Grid.Row="0" Margin="10" HorizontalAlignment="Stretch"
+                  SelectionChanged="lvEmployees_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding EmployeeID}" Width="100"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding FullName}" Width="150"/>
+                    <GridViewColumn Header="Gender" DisplayMemberBinding="{Binding Gender}" Width="70"/>
+                    <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding PhoneNo}" Width="100"/>
+                    <GridViewColumn Header="Department" DisplayMemberBinding="{Binding Department}" Width="120"/>
+                    <GridViewColumn Header="Position" DisplayMemberBinding="{Binding Position}" Width="120"/>
+                    <GridViewColumn Header="Salary" DisplayMemberBinding="{Binding Salary}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+                    <Label Content="EmployeeID"/>
+                    <TextBox x:Name="txtEmployeeID" Width="150"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10,10,0">
+                    <Label Content="Full Name"/>
+                    <TextBox x:Name="txtFullName" Width="150"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10,10,0">
+                    <Label Content="Gender"/>
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton x:Name="rbMale" Content="Male" GroupName="Gender" Margin="5"/>
+                        <RadioButton x:Name="rbFemale" Content="Female" GroupName="Gender" Margin="5"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10,10,0">
+                    <Label Content="Phone No"/>
+                    <TextBox x:Name="txtPhoneNumber" Width="100"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Label Content="Department"/>
+                    <ComboBox x:Name="cmbDepartment" Width="120" SelectionChanged="cmbDepartment_SelectionChanged">
+                        
+                        <ComboBoxItem Content="Marketing"/>
+                        <ComboBoxItem Content="Finance"/>
+                        <ComboBoxItem Content="Information Technology (IT)"/>
+                        <ComboBoxItem Content="Sales"/>
+                        <ComboBoxItem Content="Operations"/>
+                        <ComboBoxItem Content="Customer Service"/>
+                        <ComboBoxItem Content="Product Development"/>
+                        <ComboBoxItem Content="Creative"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Label Content="Position"/>
+                    <ComboBox x:Name="cmbposition" Width="120"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,10,10,0">
+                    <Label Content="Salary"/>
+                    <TextBox x:Name="txtSalary" Width="100"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,150,0,0">
+                <Button Content="Add" Width="150" Height="50" Click="btnAdd_Click"/>
+                <Button Content="Search" Width="150" Height="50" Margin="5,0,0,0" Click="btnSearch_Click"/>
+                <Button Content="Update" Width="150" Height="50" Margin="5,0,0,0" Click="btnUpdate_Click"/>
+                <Button Content="Delete" Width="150" Height="50" Margin="5,0,0,0" Click="btnDelete_Click"/>
+                <Button Content="Clear" Width="150" Height="50" Margin="5,0,0,0" Click="btnClear_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
