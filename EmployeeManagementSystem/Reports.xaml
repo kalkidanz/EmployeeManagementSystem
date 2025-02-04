@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="EmployeeManagementSystem.Reports"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EmployeeManagementSystem"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="900">
+    <Grid>
+        
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="Reports Page" FontSize="20" FontWeight="Bold" />
+
+                <ListView x:Name="lvReports" Margin="5" MaxHeight="350">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Employee ID" DisplayMemberBinding="{Binding EmployeeID}" Width="100"/>
+                            <GridViewColumn Header="FullName" DisplayMemberBinding="{Binding FullName}" Width="150"/>
+                        
+                        <GridViewColumn Header="Department" DisplayMemberBinding="{Binding Department}" Width="200"/>
+                        <GridViewColumn Header="Position" DisplayMemberBinding="{Binding Position}" Width="200"/>
+                        <GridViewColumn Header="Salary" DisplayMemberBinding="{Binding Salary}" Width="100"/>
+                            <GridViewColumn Header="Days Present" DisplayMemberBinding="{Binding PresentDays}" Width="100"/>
+                        <GridViewColumn Header="Bonus" DisplayMemberBinding="{Binding Bonus}" Width="100"/>
+                        <GridViewColumn Header="Deduction" DisplayMemberBinding="{Binding Deductions}" Width="100"/>
+                        <GridViewColumn Header="Net Salary" DisplayMemberBinding="{Binding NetSalary}" Width="100"/>
+                    </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnExportExcel" Content="Export to Excel" Click="btnExportExcel_Click" Margin="5"/>
+                    <Button x:Name="btnExportPDF" Content="Export to PDF" Click="btnExportPDF_Click" Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+
+    </Grid>
+</UserControl>

@@ -10,7 +10,7 @@ namespace EmployeeManagementSystem
     public partial class manageEmployee : UserControl
     {
         private string connectionString = @"Data Source=KAL\SQLEXPRESS;Initial Catalog=Employee;Integrated Security=True;Encrypt=False";
-        
+
 
         public manageEmployee()
         {
@@ -68,7 +68,7 @@ namespace EmployeeManagementSystem
                     MessageBox.Show("Please fill in all fields.");
                     return;
                 }
-            
+
                 string employeeID = txtEmployeeID.Text;
                 string fullName = txtFullName.Text;
                 string gender = rbMale.IsChecked == true ? "Male" : "Female";
@@ -76,7 +76,14 @@ namespace EmployeeManagementSystem
                 string department = ((ComboBoxItem)cmbDepartment.SelectedItem).Content.ToString();
                 string position = cmbposition.Text;
                 decimal salary;
-              
+
+                if (phoneNo.Length > 10 || phoneNo.Length < 10)
+                {
+                    MessageBox.Show("phoneNo length should be 10");
+                    return;
+
+                }
+
 
                 if (decimal.TryParse(txtSalary.Text, out salary))
                 {
@@ -107,7 +114,6 @@ namespace EmployeeManagementSystem
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
-                // Log the error to a file or console for further investigation.
                 Console.WriteLine(ex.ToString());
             }
         }
@@ -185,6 +191,7 @@ namespace EmployeeManagementSystem
                         command.ExecuteNonQuery();
                         MessageBox.Show("Employee updated successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         LoadEmployees();
+                        ClearInputs();
 
                     }
                 }
@@ -214,12 +221,18 @@ namespace EmployeeManagementSystem
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "DELETE FROM Employee WHERE EmployeeID = @EmployeeID";
+                    string query = "DELETE FROM Employee WHERE EmployeeID = @EmployeeID ";
+                    string deleteAttendQuery = "DELETE FROM Attendance WHERE EmployeeID = @EmployeeID";
+                    SqlCommand deletePayrollCommand = new SqlCommand(deleteAttendQuery, connection);
+                    deletePayrollCommand.Parameters.AddWithValue("@EmployeeID", employeeID);
+
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Parameters.AddWithValue("@EmployeeID", employeeID);
 
                     connection.Open();
+                    deletePayrollCommand.ExecuteNonQuery();
                     int rowsAffected = command.ExecuteNonQuery();
+
                     if (rowsAffected > 0)
                     {
                         MessageBox.Show("Employee deleted successfully.");
@@ -266,16 +279,14 @@ namespace EmployeeManagementSystem
             ComboBox cmbDepartment = sender as ComboBox;
             ComboBox cmbPosition = cmbposition;
 
-            // Clear the existing position items
             cmbPosition.Items.Clear();
 
-            // Get the selected department
             if (cmbDepartment.SelectedItem != null)
             {
                 string selectedDepartment = (cmbDepartment.SelectedItem as ComboBoxItem).Content.ToString();
                 switch (selectedDepartment)
                 {
-                   
+
                     case "Marketing":
                         cmbPosition.Items.Add("Marketing Director");
                         cmbPosition.Items.Add("Marketing Manager");
@@ -300,7 +311,7 @@ namespace EmployeeManagementSystem
                         cmbPosition.Items.Add("IT Support Specialist");
                         cmbPosition.Items.Add("Cybersecurity Analyst");
                         break;
-                    case "5. Sales":
+                    case "Sales":
                         cmbPosition.Items.Add("Sales Director");
                         cmbPosition.Items.Add("Account Executive");
                         cmbPosition.Items.Add("Sales Representative");
@@ -350,6 +361,4 @@ namespace EmployeeManagementSystem
             ClearInputs();
         }
     }
-
-  
 }

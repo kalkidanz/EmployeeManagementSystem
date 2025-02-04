@@ -5,7 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
        
-            
+            <!-- DockPanel Style -->
             <Style TargetType="DockPanel">
                 <Setter Property="Background" Value="LightBlue"/>
             <Setter Property="Margin" Value="10"/>
@@ -19,7 +19,7 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Height" Value="40"/>
         </Style>
-        
+        <!-- Label Style -->
         <Style TargetType="Label">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -27,6 +27,8 @@
         </Style>
        
 
+
+        <!-- TextBox Style -->
         <Style TargetType="TextBox">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="BorderBrush" Value="DarkSlateGray"/>
@@ -35,7 +37,7 @@
             <Setter Property="Width" Value="250"/>
         </Style>
 
-        
+        <!-- ComboBox Style -->
         <Style TargetType="ComboBox">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="BorderBrush" Value="DarkSlateGray"/>
@@ -44,7 +46,7 @@
             <Setter Property="Width" Value="200"/>
         </Style>
 
-        
+        <!-- Button Style -->
         <Style TargetType="Button">
             <Setter Property="Width" Value="150"/>
             <Setter Property="Height" Value="50"/>

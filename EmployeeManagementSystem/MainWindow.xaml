@@ -12,25 +12,12 @@
             <ColumnDefinition Width="373*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Employee Management System" 
-                   FontSize="20" FontWeight="Bold" 
+                   FontSize="24" FontWeight="Bold" 
                    HorizontalAlignment="Left" 
-                   Margin="199,20,0,0" Grid.Column="1" />
+                   Margin="199,50,0,0" Grid.Column="1" />
 
-        <TextBlock Text="Select Role:" 
-                   Margin="50,80,0,0" 
-                   VerticalAlignment="Top" 
-                   HorizontalAlignment="Left" Grid.ColumnSpan="2" />
-        <ComboBox Name="cmbRole" 
-                  Width="250" Height="30" 
-                  Margin="96,80,0,0" 
-                  VerticalAlignment="Top" 
-                  HorizontalAlignment="Left" 
-                  SelectedIndex="0" Grid.Column="1">
-            <ComboBoxItem Content="Admin" />
-            <ComboBoxItem Content="User" />
-        </ComboBox>
+        
 
-        <!-- Username -->
         <TextBlock Text="Username:" 
                    Margin="50,130,0,0" 
                    VerticalAlignment="Top" 
@@ -41,7 +28,7 @@
                  VerticalAlignment="Top" 
                  HorizontalAlignment="Left" Grid.Column="1" />
 
-        <!-- Password -->
+       
         <TextBlock Text="Password:" 
                    Margin="50,180,0,0" 
                    VerticalAlignment="Top" 
@@ -52,7 +39,6 @@
                      VerticalAlignment="Top" 
                      HorizontalAlignment="Left" Grid.Column="1" />
 
-        <!-- Login Button -->
         <Button Content="Login" 
                 Width="120" Height="35" 
                 Margin="111,250,0,0" 
@@ -60,7 +46,6 @@
                 HorizontalAlignment="Left" 
                 Click="btnLogin_Click" Grid.Column="1" />
 
-        <!-- Message for Errors -->
         <TextBlock Name="txtMessage" 
                    Foreground="Red" 
                    FontSize="14" 

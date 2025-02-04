@@ -44,9 +44,9 @@ namespace EmployeeManagementSystem
 
         private void btnCalculateSalaries_Click(object sender, RoutedEventArgs e)
         {
-            CalculateSalary salary = new CalculateSalary();
+            CalculateSalary manageEmployeesControl = new CalculateSalary();
             ContentArea.Children.Clear();
-            ContentArea.Children.Add(salary);
+            ContentArea.Children.Add(manageEmployeesControl);
         }
 
         private void btnReports_Click(object sender, RoutedEventArgs e)
@@ -66,9 +66,7 @@ namespace EmployeeManagementSystem
 
         private void btnAdminDashboard_Click(object sender, RoutedEventArgs e)
         {
-            AdminDashboard AdminDashboard = new AdminDashboard();
-            AdminDashboard.Show();
-            this.Close();
-        }       
+
+        }
     }
 }

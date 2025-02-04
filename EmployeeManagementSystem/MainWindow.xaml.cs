@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 
+
 namespace EmployeeManagementSystem
 {
     /// <summary>
@@ -19,40 +20,30 @@ namespace EmployeeManagementSystem
         {
             try
             {
-                // Get selected role
-                string role = ((ComboBoxItem)cmbRole.SelectedItem)?.Content?.ToString();
+                
                 string username = txtUsername.Text;
                 string password = txtPassword.Password;
 
-                // Validate inputs
-                if (string.IsNullOrEmpty(role) || string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 {
                     MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                // Authenticate the user
-                if (AuthenticateUser(username, password, role))
+                if (AuthenticateUser(username, password))
                 {
-                    if (role == "Admin")
+                   
                     {
                         MessageBox.Show("Welcome, Admin!", "Login Successful", MessageBoxButton.OK, MessageBoxImage.Information);
                         AdminDashboard adminDashboard = new AdminDashboard();
                         adminDashboard.Show();
-                        Application.Current.MainWindow = adminDashboard; // Set new main window
                     }
-                    else if (role == "User")
-                    {
-                        MessageBox.Show("Welcome, User!", "Login Successful", MessageBoxButton.OK, MessageBoxImage.Information);
-                        UserDashboard userDashboard = new UserDashboard();
-                        userDashboard.Show();
-                        Application.Current.MainWindow = userDashboard; // Set new main window
-                    }
-                    this.Close(); // Close current window
+                    
+                    this.Close(); 
                 }
                 else
                 {
-                    txtMessage.Text = "Invalid username, password, or role!";
+                    txtMessage.Text = "Invalid username, password";
                 }
             }
             catch (Exception ex)
@@ -61,7 +52,7 @@ namespace EmployeeManagementSystem
             }
         }
 
-        private bool AuthenticateUser(string username, string password, string role)
+        private bool AuthenticateUser(string username, string password)
         {
             bool isValid = false;
             string connectionString = @"Data Source=KAL\SQLEXPRESS;Initial Catalog=Employee;Integrated Security=True;Encrypt=False";
@@ -70,11 +61,11 @@ namespace EmployeeManagementSystem
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password AND Role = @Role";
+                    string query = "SELECT COUNT(*) FROM Users WHERE Username = @Username AND Password = @Password ";
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password); // Replace with hashed password in production
-                    cmd.Parameters.AddWithValue("@Role", role);
+                    cmd.Parameters.AddWithValue("@Password", password); 
+                   
 
                     conn.Open();
                     int userCount = Convert.ToInt32(cmd.ExecuteScalar());

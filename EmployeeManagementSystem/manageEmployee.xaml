@@ -33,15 +33,15 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" VerticalAlignment="Top">
-                <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+            <StackPanel Grid.Column="0" VerticalAlignment="Top" >
+                <StackPanel Orientation="Horizontal" >
                     <Label Content="EmployeeID"/>
-                    <TextBox x:Name="txtEmployeeID" Width="150"/>
+                    <TextBox x:Name="txtEmployeeID" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,10,10,0">
                     <Label Content="Full Name"/>
-                    <TextBox x:Name="txtFullName" Width="150"/>
+                    <TextBox x:Name="txtFullName" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,10,10,0">
@@ -54,15 +54,15 @@
 
                 <StackPanel Orientation="Horizontal" Margin="0,10,10,0">
                     <Label Content="Phone No"/>
-                    <TextBox x:Name="txtPhoneNumber" Width="100"/>
+                    <TextBox x:Name="txtPhoneNumber" />
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Grid.Column="1" VerticalAlignment="Top">
-                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+            <StackPanel VerticalAlignment="Top"  RenderTransformOrigin="-0.538,0.599" Margin="400,0,0,0" >
+                <StackPanel Orientation="Horizontal" >
                     <Label Content="Department"/>
-                    <ComboBox x:Name="cmbDepartment" Width="120" SelectionChanged="cmbDepartment_SelectionChanged">
-                        
+                    <ComboBox x:Name="cmbDepartment"  SelectionChanged="cmbDepartment_SelectionChanged">
+
                         <ComboBoxItem Content="Marketing"/>
                         <ComboBoxItem Content="Finance"/>
                         <ComboBoxItem Content="Information Technology (IT)"/>
@@ -76,12 +76,12 @@
 
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Label Content="Position"/>
-                    <ComboBox x:Name="cmbposition" Width="120"/>
+                    <ComboBox x:Name="cmbposition" />
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,10,10,0">
                     <Label Content="Salary"/>
-                    <TextBox x:Name="txtSalary" Width="100"/>
+                    <TextBox x:Name="txtSalary" />
                 </StackPanel>
             </StackPanel>
 

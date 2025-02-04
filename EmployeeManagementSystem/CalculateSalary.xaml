@@ -1,21 +1,66 @@
-﻿<UserControl x:Class="EmployeeManagementSystem.CalculateSalary"
+﻿<UserControl x:Class="EmployeeManagementSystem.CalculateSalary" 
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EmployeeManagementSystem"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <StackPanel Margin="10">
-            <TextBlock Text="Calculate Salary" FontSize="20" FontWeight="Bold" Margin="0,0,0,20"/>
+             d:DesignHeight="600" d:DesignWidth="800">
 
-            <TextBlock Text="Employee ID" Margin="0,0,0,5"/>
-            <TextBox x:Name="txtEmployeeID" Width="200"/>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <Button x:Name="btnCalculate" Content="Calculate Salary" Width="200" Margin="0,10,0,0" Click="btnCalculate_Click"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="txtResult" FontSize="16" Margin="0,20,0,0"/>
+        <Label Content="Employee ID:" Grid.Row="0" VerticalAlignment="Center"/>
+        <ComboBox Name="cmbEmployeeID" Grid.Row="0" Margin="120,0,0,0"  SelectionChanged="cmbEmployeeID_SelectionChanged"/>
+       
+
+
+        <Label Content="Salary:" Grid.Row="1" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtSalary" Grid.Row="1" Margin="120,2,0,0"  IsReadOnly="True"/>
+
+
+        <Label Content="Days Present:" Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtPresentDays" Grid.Row="2" Margin="120,5,0,0" IsReadOnly="True"/>
+
+
+        <Label Content="Bonus:" Grid.Row="3" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtBonus" Grid.Row="3" Margin="120,5,0,0" IsReadOnly="True"/>
+
+
+        <Label Content="Deductions:" Grid.Row="4" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtDeductions" Grid.Row="4" Margin="120,5,0,0" IsReadOnly="True" />
+
+
+        <Label Content="Net Salary:" Grid.Row="5" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtNetSalary" Grid.Row="5" Margin="120,5,0,0"  IsReadOnly="True"/>
+
+      
+        <Button Name="btnCalculate" Grid.Row="6" Grid.Column="0" Content="Calculate Salary" Click="btnCalculate_Click" Width="140" Height="30" Margin="5"/>
+        <Button Name="btnSavePayroll" Grid.Row="6" Grid.Column="1" Content="Save Payroll" Click="btnSavePayroll_Click" Width="140" Height="30" Margin="5"/>
+
+        
+        <DataGrid x:Name="PayrollSummary" Grid.Row="7" Grid.ColumnSpan="3" Margin="0,10,0,0" AutoGenerateColumns="True" Height="200"/>
+
+        <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,10,0,0">
+            <Button Name="btnExportExcel" Content="Export to Excel" Click="btnExportExcel_Click" Width="140" Height="30" Margin="5"/>
+            <Button Name="btnExportPDF" Content="Export to PDF" Click="btnExportPDF_Click" Width="140" Height="30" Margin="5"/>
         </StackPanel>
+
     </Grid>
 </UserControl>
