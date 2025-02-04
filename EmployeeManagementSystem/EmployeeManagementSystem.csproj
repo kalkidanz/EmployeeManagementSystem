@@ -155,7 +155,7 @@
     <Compile Include="CalculateSalary.xaml.cs">
       <DependentUpon>CalculateSalary.xaml</DependentUpon>
     </Compile>
-    <Compile Include=".xaml.cs">
+    <Compile Include="ManageEmployee.xaml.cs">
       <DependentUpon>ManageEmployee.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Attendance.cs" />
@@ -219,7 +219,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="EmployeeManagementSystem_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

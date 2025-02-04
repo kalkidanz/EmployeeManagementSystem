@@ -1,4 +1,10 @@
 ﻿using EmployeeManagementSystem.Model;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Windows.Controls;
+using System.Windows;
+using System;
+using EmployeeManagementSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -59,9 +65,9 @@ namespace EmployeeManagementSystem
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(txtEmployeeID.Text) || string.IsNullOrWhiteSpace(txtFullName.Text)
-                    || (rbMale.IsChecked == false && rbFemale.IsChecked == false) ||
-                      string.IsNullOrWhiteSpace(txtPhoneNumber.Text) || cmbDepartment.SelectedItem == null ||
+                if (string.IsNullOrWhiteSpace(txtEmployeeID.Text) || string.IsNullOrWhiteSpace(txtFullName.Text)||
+                     (rbMale.IsChecked == false && rbFemale.IsChecked == false)||
+                      string.IsNullOrWhiteSpace(txtPhoneNumber.Text) || cmbDepartment.SelectedItem == null||
                         string.IsNullOrWhiteSpace(cmbposition.Text) || string.IsNullOrWhiteSpace(txtSalary.Text))
                 {
 
@@ -83,9 +89,7 @@ namespace EmployeeManagementSystem
                     return;
 
                 }
-
-
-                if (decimal.TryParse(txtSalary.Text, out salary))
+if (decimal.TryParse(txtSalary.Text, out salary))
                 {
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
@@ -173,7 +177,7 @@ namespace EmployeeManagementSystem
                 string position = cmbposition.Text;
                 decimal salary;
 
-                if (decimal.TryParse(txtSalary.Text, out salary))
+if (decimal.TryParse(txtSalary.Text, out salary))
                 {
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
@@ -251,8 +255,7 @@ namespace EmployeeManagementSystem
                 Console.WriteLine(ex.ToString());
             }
         }
-
-        private void lvEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+private void lvEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lvEmployees.SelectedItem != null)
             {
